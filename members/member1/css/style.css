@@ -1,0 +1,535 @@
+﻿/* Base Styles */
+:root {
+    --primary-color: #007bff; /* Màu xanh dương chủ đạo */
+    --secondary-color: #6c757d; /* Màu xám phụ trợ */
+    --text-color: #333; /* Màu chữ chính */
+    --light-bg: #f8f9fa; /* Màu nền nhẹ */
+    --dark-bg: #343a40; /* Màu nền tối (cho footer hoặc tương lai dark mode) */
+    --white: #fff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+    scroll-behavior: smooth; /* Cho phép cuộn mượt */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: #0056b3; /* Darker shade of #007bff */
+    }
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+    .btn:hover {
+        background-color: #0056b3; /* Darker shade of #007bff */
+    }
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+/* Header/Navbar */
+header {
+    background-color: #333; /* Màu nền đậm cho header */
+    color: var(--white);
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Để ảnh nền không tràn ra */
+}
+
+.navbar {
+    background-color: #222;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar .logo {
+        font-size: 1.8em;
+        font-weight: 700;
+        color: var(--white);
+    }
+
+    .navbar .nav-links {
+        display: flex;
+    }
+
+        .navbar .nav-links li {
+            margin-left: 30px;
+        }
+
+        .navbar .nav-links a {
+            color: var(--white);
+            font-weight: 400;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+            .navbar .nav-links a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                display: block;
+                margin-top: 5px;
+                right: 0;
+                background: var(--primary-color);
+                transition: width 0.3s ease;
+            }
+
+            .navbar .nav-links a:hover::after {
+                width: 100%;
+                left: 0;
+                background: var(--primary-color);
+            }
+
+/* Burger menu for mobile */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+    .burger div {
+        width: 25px;
+        height: 3px;
+        background-color: var(--white);
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+
+.nav-active .burger .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.nav-active .burger .line2 {
+    opacity: 0;
+}
+
+.nav-active .burger .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+.hero {
+    padding: 100px 0; /* Khoảng cách trên dưới cho phần Hero */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* Đảm bảo đủ chiều cao */
+    background: url('../images/cv.jpg') no-repeat center center/cover; /* Đã sửa đường dẫn ảnh nền, lưu ý đường dẫn này */
+    position: relative;
+    color: var(--white);
+}
+
+    .hero::before { /* Lớp phủ đen để chữ dễ đọc */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero .container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+    }
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin-bottom: 25px;
+    box-shadow: var(--box-shadow);
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+.hero .lead {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero .social-links a {
+    color: var(--white);
+    font-size: 1.8em;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+    .hero .social-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-5px);
+    }
+
+/* Sections */
+.section {
+    padding: 80px 0;
+    border-bottom: 1px solid #eee;
+}
+
+    .section:last-child {
+        border-bottom: none;
+    }
+
+    .section h2 {
+        font-size: 2.8em;
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+        color: #222;
+    }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+/* Education Section */
+.education-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+    border-left: 5px solid var(--primary-color);
+}
+
+    .education-item h3 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        font-size: 1.6em;
+    }
+
+    .education-item p {
+        margin-bottom: 5px;
+        font-size: 1.1em;
+    }
+
+    .education-item ul {
+        margin-top: 10px;
+        list-style: disc;
+        margin-left: 20px;
+    }
+
+        .education-item ul li {
+            margin-bottom: 5px;
+        }
+
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.skill-category {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+    .skill-category:hover {
+        transform: translateY(-10px);
+    }
+
+    .skill-category h3 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 1.5em;
+    }
+
+    .skill-category ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .skill-category li {
+        background-color: var(--light-bg);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.95em;
+        color: #555;
+        border: 1px solid #ddd;
+    }
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-item {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+    .project-item:hover {
+        transform: translateY(-10px);
+    }
+
+    .project-item img {
+        width: 100%;
+        height: 200px; /* Chiều cao cố định cho ảnh dự án */
+        object-fit: cover;
+        display: block;
+        border-bottom: 1px solid #eee;
+    }
+
+    .project-item h3 {
+        color: var(--primary-color);
+        padding: 20px 20px 10px;
+        font-size: 1.6em;
+    }
+
+    .project-item p {
+        padding: 0 20px 15px;
+        font-size: 1em;
+    }
+
+    .project-item .technologies {
+        font-style: italic;
+        color: var(--secondary-color);
+        padding: 0 20px 15px;
+        font-size: 0.9em;
+    }
+
+.project-links {
+    padding: 0 20px 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+    .project-links .btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+
+/* Contact Section */
+.contact-info {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.contact-list {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .contact-list li {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    .contact-list i {
+        color: var(--primary-color);
+        margin-right: 10px;
+    }
+
+.social-links.large-icons {
+    text-align: center;
+}
+
+    .social-links.large-icons a {
+        font-size: 2.5em;
+        margin: 0 20px;
+        color: var(--primary-color);
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+        .social-links.large-icons a:hover {
+            transform: translateY(-8px);
+            color: #0056b3; /* Darker shade of #007bff */
+        }
+
+/* Footer */
+footer {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+/* Scroll Animation (JavaScript controlled) */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        position: fixed;
+        right: 0;
+        top: 0; /* Adjust if your header has a fixed height */
+        width: 60%;
+        height: 100vh;
+        background-color: #222;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+        padding-top: 80px; /* Space for the header content */
+    }
+
+        .navbar .nav-links li {
+            opacity: 0; /* Hide until nav is active */
+            margin: 20px 0;
+            text-align: center;
+        }
+
+    .nav-active .nav-links {
+        transform: translateX(0%);
+    }
+
+        .nav-active .nav-links li {
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+        }
+
+    .burger {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero .lead {
+        font-size: 1.2em;
+    }
+
+    .section h2 {
+        font-size: 2em;
+    }
+
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero .lead {
+        font-size: 1em;
+    }
+
+    .hero .social-links a {
+        font-size: 1.5em;
+        margin: 0 10px;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    .social-links.large-icons a {
+        font-size: 2em;
+        margin: 0 15px;
+    }
+}
